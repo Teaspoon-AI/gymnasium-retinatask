@@ -94,9 +94,8 @@ class TestRetinaPatterns:
 
         fully_valid_count = 0
         for pattern in range(256):
-            if (
-                RetinaPatterns.is_left_valid(pattern)
-                and RetinaPatterns.is_right_valid(pattern)
+            if RetinaPatterns.is_left_valid(pattern) and RetinaPatterns.is_right_valid(
+                pattern
             ):
                 fully_valid_count += 1
 
@@ -291,7 +290,9 @@ class TestRetinaEnv:
                 action = np.array([left_label, right_label], dtype=np.float32)
             elif target_error == 2.0:
                 # Opposite of correct labels gives error of 2
-                action = np.array([1.0 - left_label, 1.0 - right_label], dtype=np.float32)
+                action = np.array(
+                    [1.0 - left_label, 1.0 - right_label], dtype=np.float32
+                )
             elif target_error == 1.0:
                 # One correct, one wrong
                 action = np.array([left_label, 1.0 - right_label], dtype=np.float32)
@@ -299,7 +300,7 @@ class TestRetinaEnv:
             obs, reward, terminated, truncated, info = env.step(action)
 
             # Verify reward matches formula
-            calculated_reward = 1000.0 / (1.0 + info["pattern_error"]**2)
+            calculated_reward = 1000.0 / (1.0 + info["pattern_error"] ** 2)
             assert reward == pytest.approx(
                 calculated_reward
             ), f"Expected reward {expected_reward}, got {reward}"
@@ -327,7 +328,9 @@ class TestRetinaEnv:
 
     def test_error_accumulation_batch_mode(self):
         """Verify error accumulates correctly across batch."""
-        env = gym.make("RetinaTask-v0", mode="batch", batch_size=10, reward_type="paper")
+        env = gym.make(
+            "RetinaTask-v0", mode="batch", batch_size=10, reward_type="paper"
+        )
         obs, info = env.reset(seed=42)
 
         total_error_manual = 0.0
@@ -337,8 +340,6 @@ class TestRetinaEnv:
             obs, reward, terminated, truncated, info = env.step(action)
 
             # Track error manually
-            from gymnasium_retinatask import RetinaPatterns
-
             # Get previous pattern (current one in info is the next pattern)
             # Actually, we need to calculate based on the info returned
             total_error_manual += info["pattern_error"]
@@ -512,7 +513,9 @@ class TestRetinaEnv:
         obs, reward, terminated, truncated, info = env.step(action)
 
         # The pattern from reset should be used
-        pattern = info["pattern"]  # This is None after termination, but we get it from previous
+        pattern = info[
+            "pattern"
+        ]  # This is None after termination, but we get it from previous
         # Actually, we need to save it from reset
         obs, info_reset = env.reset(seed=42)
         pattern = info_reset["pattern"]
@@ -548,7 +551,9 @@ class TestRetinaEnv:
         # With 10 episodes of 256 patterns each, we should see good coverage
         unique_patterns = set(all_patterns)
         # We expect to see most patterns at least once (not all due to randomness)
-        assert len(unique_patterns) > 200, f"Only saw {len(unique_patterns)}/256 patterns"
+        assert (
+            len(unique_patterns) > 200
+        ), f"Only saw {len(unique_patterns)}/256 patterns"
 
         env.close()
 
