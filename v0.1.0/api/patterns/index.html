@@ -1,0 +1,879 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark">
+    <meta name="description" content="Gymnasium Retina Task is a Gymnasium-compatible implementation of the     Left & Right Retina Problem, a benchmark for testing modular neural networks.">
+    <meta property="og:title" content="Gymnasium Retina Task" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Gymnasium Retina Task is a Gymnasium-compatible implementation of the     Left & Right Retina Problem, a benchmark for testing modular neural networks." />
+    <meta property="og:url" content="None" /><meta property="og:image" content="/_static/img/retinatask-github.png" /><meta name="twitter:card" content="summary_large_image"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Release Notes" href="../../release_notes/" /><link rel="prev" title="Environment API" href="../environment/" />
+
+    <link rel="shortcut icon" href="../../_static/favicon.svg"/><!-- Generated with Sphinx 7.4.7 and Furo 2023.08.19.dev1 -->
+        <title>Pattern Utilities API - Gymnasium Retina Task</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=3e7f4c72" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=82c8b628" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    <header class="farama-header" aria-label="Farama header">
+      <div class="farama-header__container">
+        <div class="farama-header__left--mobile">
+          <label class="nav-overlay-icon" for="__navigation">
+            <div class="visually-hidden">Toggle site navigation sidebar</div>
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <defs></defs>
+              <line x1="0.5" y1="4" x2="23.5" y2="4"></line>
+              <line x1="0.232" y1="12" x2="23.5" y2="12"></line>
+              <line x1="0.232" y1="20" x2="23.5" y2="20"></line>
+            </svg>
+          </label>
+        </div>
+        <div class="farama-header__left farama-header__center--mobile">
+          <a href="../../">
+              <img class="farama-header__logo only-light" src="../../_static/img/retinatask.svg" alt="Light Logo"/>
+              <img class="farama-header__logo only-dark" src="../../_static/img/retinatask-white.svg" alt="Dark Logo"/>
+            <span class="farama-header__title">Gymnasium Retina Task</span>
+          </a>
+        </div>
+        <div class="farama-header__right">
+          <div class="farama-header-menu">
+            <button class="farama-header-menu__btn" aria-label="Open Farama Menu" aria-expanded="false" aria-haspopup="true" aria-controls="farama-menu">
+              <img class="farama-black-logo-invert" src="../../_static/img/farama-logo-header.svg">
+              <svg viewBox="0 0 24 24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <polyline style="stroke-linecap: round; stroke-linejoin: round; fill: none; stroke-width: 2px;" points="1 7 12 18 23 7"></polyline>
+              </svg>
+            </button>
+            <div class="farama-header-menu-container farama-hidden" aria-hidden="true" id="farama-menu">
+              <div class="farama-header-menu__header">
+                <a href="https://farama.org">
+                  <img class="farama-header-menu__logo farama-white-logo-invert" src="../../_static/img/farama_solid_white.svg" alt="Farama Foundation logo">
+                  <span>Farama Foundation</span>
+                </a>
+                <div class="farama-header-menu-header__right">
+                  <button id="farama-close-menu">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-close">
+                      <line x1="3" y1="21" x2="21" y2="3"></line>
+                      <line x1="3" y1="3" x2="21" y2="21"></line>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="farama-header-menu__body">
+                <!-- Response from farama.org/api/projects.json -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<div class="page">
+  <!--<header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../"><div class="brand">Gymnasium Retina Task</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>-->
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="farama-sidebar__title" href="../../">
+      <img class="farama-header__logo only-light" src="../../_static/img/retinatask.svg" alt="Light Logo"/>
+      <img class="farama-header__logo only-dark" src="../../_static/img/retinatask-white.svg" alt="Dark Logo"/>
+    <span class="farama-header__title">Gymnasium Retina Task</span>
+  </a><form class="sidebar-search-container" method="get" action="../../search/" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../content/installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/basic_usage/">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/pattern_analysis/">Pattern Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/simple_agent/">Simple Agent Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/evaluation/">Evaluation Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../environment/">Environment API</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Pattern Utilities API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes/">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/contributing/">Contributing</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/Teaspoon-AI/gymnasium-retinatask">GitHub</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main-container">
+
+    
+
+    
+
+    <div class="main">
+      <div class="content">
+        <div class="article-container">
+          <a href="#" class="back-to-top muted-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+            </svg>
+            <span>Back to top</span>
+          </a>
+          <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+              <button class="theme-toggle" title="Toggle color theme">
+                <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+                <svg class="theme-icon-when-auto">
+                  <use href="#svg-sun-half"></use>
+                </svg>
+                <svg class="theme-icon-when-dark">
+                  <use href="#svg-moon"></use>
+                </svg>
+                <svg class="theme-icon-when-light">
+                  <use href="#svg-sun"></use>
+                </svg>
+              </button>
+            </div>
+            <label class="toc-overlay-icon toc-content-icon" for="__toc">
+              <div class="visually-hidden">Toggle table of contents sidebar</div>
+              <i class="icon"><svg>
+                  <use href="#svg-toc"></use>
+                </svg></i>
+            </label>
+          </div>
+          <article role="main">
+            
+            <section class="tex2jax_ignore mathjax_ignore" id="pattern-utilities-api">
+<h1>Pattern Utilities API<a class="headerlink" href="#pattern-utilities-api" title="Link to this heading">¶</a></h1>
+<section id="retinapatterns">
+<h2>RetinaPatterns<a class="headerlink" href="#retinapatterns" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gymnasium_retinatask.retina_env.RetinaPatterns">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gymnasium_retinatask.retina_env.</span></span><span class="sig-name descname"><span class="pre">RetinaPatterns</span></span><a class="reference internal" href="../../_modules/gymnasium_retinatask/retina_env/#RetinaPatterns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gymnasium_retinatask.retina_env.RetinaPatterns" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Manages pattern validation for the Retina Task.</p>
+<dl class="simple">
+<dt>The retina consists of 8 pixels arranged in a 4x2 grid:</dt><dd><p>Left side (4 pixels) | Right side (4 pixels)</p>
+</dd>
+</dl>
+<p>Each side has 8 valid 2x2 patterns out of 16 possible patterns.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gymnasium_retinatask.retina_env.RetinaPatterns.LEFT_PATTERNS">
+<span class="sig-name descname"><span class="pre">LEFT_PATTERNS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[8,</span> <span class="pre">4,</span> <span class="pre">12,</span> <span class="pre">15,</span> <span class="pre">11,</span> <span class="pre">7,</span> <span class="pre">14,</span> <span class="pre">13]</span></em><a class="headerlink" href="#gymnasium_retinatask.retina_env.RetinaPatterns.LEFT_PATTERNS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gymnasium_retinatask.retina_env.RetinaPatterns.RIGHT_PATTERNS">
+<span class="sig-name descname"><span class="pre">RIGHT_PATTERNS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[11,</span> <span class="pre">7,</span> <span class="pre">14,</span> <span class="pre">13,</span> <span class="pre">2,</span> <span class="pre">1,</span> <span class="pre">3,</span> <span class="pre">15]</span></em><a class="headerlink" href="#gymnasium_retinatask.retina_env.RetinaPatterns.RIGHT_PATTERNS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gymnasium_retinatask.retina_env.RetinaPatterns.get_labels">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/gymnasium_retinatask/retina_env/#RetinaPatterns.get_labels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gymnasium_retinatask.retina_env.RetinaPatterns.get_labels" title="Link to this definition">¶</a></dt>
+<dd><p>Get the correct classification labels for a pattern.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pattern</strong> – 8-bit integer representing the full retina state.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>Tuple[float, float]</strong> – (left_label, right_label) where each is 1.0 for</p></li>
+<li><p><strong>valid and 0.0 for invalid.</strong></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gymnasium_retinatask.retina_env.RetinaPatterns.is_left_valid">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_left_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../../_modules/gymnasium_retinatask/retina_env/#RetinaPatterns.is_left_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gymnasium_retinatask.retina_env.RetinaPatterns.is_left_valid" title="Link to this definition">¶</a></dt>
+<dd><p>Check if the left side of the pattern is valid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pattern</strong> – 8-bit integer representing the full retina state.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>bool</strong> – True if the left 4 bits match a valid left pattern.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gymnasium_retinatask.retina_env.RetinaPatterns.is_right_valid">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_right_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../../_modules/gymnasium_retinatask/retina_env/#RetinaPatterns.is_right_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gymnasium_retinatask.retina_env.RetinaPatterns.is_right_valid" title="Link to this definition">¶</a></dt>
+<dd><p>Check if the right side of the pattern is valid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pattern</strong> – 8-bit integer representing the full retina state.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>bool</strong> – True if the right 4 bits match a valid right pattern.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gymnasium_retinatask.retina_env.RetinaPatterns.pattern_to_observation">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pattern_to_observation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../../_modules/gymnasium_retinatask/retina_env/#RetinaPatterns.pattern_to_observation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gymnasium_retinatask.retina_env.RetinaPatterns.pattern_to_observation" title="Link to this definition">¶</a></dt>
+<dd><p>Convert an 8-bit pattern to an observation array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pattern</strong> – 8-bit integer representing the retina state.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>np.ndarray</strong> – Array of shape (8,) with values in {0.0, 1.0}.</p></li>
+<li><p><strong>Index 0 corresponds to bit 7</strong> (<em>leftmost pixel</em>)</p></li>
+<li><p><strong>Index 7 corresponds to bit 0</strong> (<em>rightmost pixel</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="class-methods">
+<h2>Class Methods<a class="headerlink" href="#class-methods" title="Link to this heading">¶</a></h2>
+<section id="is-left-valid">
+<h3>is_left_valid<a class="headerlink" href="#is-left-valid" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_left_valid</span><span class="p">(</span><span class="n">pattern</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+</pre></div>
+</div>
+<p>Check if the left side (bits 7-4) of the pattern is valid.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pattern</span></code> (int): 8-bit integer (0-255) representing the retina state</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>: True if the left 4 bits match a valid left pattern</p></li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">gymnasium_retinatask</span><span class="w"> </span><span class="kn">import</span> <span class="n">RetinaPatterns</span>
+
+<span class="c1"># Pattern with left side 0b1111 (valid)</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="mb">0b11110000</span>  <span class="c1"># 240</span>
+<span class="k">assert</span> <span class="n">RetinaPatterns</span><span class="o">.</span><span class="n">is_left_valid</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span>
+
+<span class="c1"># Pattern with left side 0b0000 (invalid)</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="mb">0b00001111</span>  <span class="c1"># 15</span>
+<span class="k">assert</span> <span class="n">RetinaPatterns</span><span class="o">.</span><span class="n">is_left_valid</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</section>
+<section id="is-right-valid">
+<h3>is_right_valid<a class="headerlink" href="#is-right-valid" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_right_valid</span><span class="p">(</span><span class="n">pattern</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+</pre></div>
+</div>
+<p>Check if the right side (bits 3-0) of the pattern is valid.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pattern</span></code> (int): 8-bit integer (0-255) representing the retina state</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>: True if the right 4 bits match a valid right pattern</p></li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">gymnasium_retinatask</span><span class="w"> </span><span class="kn">import</span> <span class="n">RetinaPatterns</span>
+
+<span class="c1"># Pattern with right side 0b1111 (valid)</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="mb">0b00001111</span>  <span class="c1"># 15</span>
+<span class="k">assert</span> <span class="n">RetinaPatterns</span><span class="o">.</span><span class="n">is_right_valid</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span>
+
+<span class="c1"># Pattern with right side 0b0000 (invalid)</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="mb">0b11110000</span>  <span class="c1"># 240</span>
+<span class="k">assert</span> <span class="n">RetinaPatterns</span><span class="o">.</span><span class="n">is_right_valid</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</section>
+<section id="get-labels">
+<h3>get_labels<a class="headerlink" href="#get-labels" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_labels</span><span class="p">(</span><span class="n">pattern</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Get the correct classification labels for a pattern.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pattern</span></code> (int): 8-bit integer (0-255) representing the retina state</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Tuple[float,</span> <span class="pre">float]</span></code>: <code class="docutils literal notranslate"><span class="pre">(left_label,</span> <span class="pre">right_label)</span></code> where each is 1.0 if valid, 0.0 if invalid</p></li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">gymnasium_retinatask</span><span class="w"> </span><span class="kn">import</span> <span class="n">RetinaPatterns</span>
+
+<span class="c1"># Both sides valid</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="mb">0b11111111</span>  <span class="c1"># 255</span>
+<span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">RetinaPatterns</span><span class="o">.</span><span class="n">get_labels</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Left: </span><span class="si">{</span><span class="n">left</span><span class="si">}</span><span class="s2">, Right: </span><span class="si">{</span><span class="n">right</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Left: 1.0, Right: 1.0</span>
+
+<span class="c1"># Only left valid</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="mb">0b11110000</span>  <span class="c1"># 240</span>
+<span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">RetinaPatterns</span><span class="o">.</span><span class="n">get_labels</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Left: </span><span class="si">{</span><span class="n">left</span><span class="si">}</span><span class="s2">, Right: </span><span class="si">{</span><span class="n">right</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Left: 1.0, Right: 0.0</span>
+
+<span class="c1"># Neither valid</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="mb">0b00000000</span>  <span class="c1"># 0</span>
+<span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">RetinaPatterns</span><span class="o">.</span><span class="n">get_labels</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Left: </span><span class="si">{</span><span class="n">left</span><span class="si">}</span><span class="s2">, Right: </span><span class="si">{</span><span class="n">right</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Left: 0.0, Right: 0.0</span>
+</pre></div>
+</div>
+</section>
+<section id="pattern-to-observation">
+<h3>pattern_to_observation<a class="headerlink" href="#pattern-to-observation" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pattern_to_observation</span><span class="p">(</span><span class="n">pattern</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+</pre></div>
+</div>
+<p>Convert an 8-bit pattern to an observation array.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pattern</span></code> (int): 8-bit integer (0-255) representing the retina state</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code>: Array of shape <code class="docutils literal notranslate"><span class="pre">(8,)</span></code> with dtype <code class="docutils literal notranslate"><span class="pre">float32</span></code>, containing values in {0.0, 1.0}</p></li>
+</ul>
+<p><strong>Bit Order:</strong></p>
+<ul class="simple">
+<li><p>Index 0 corresponds to bit 7 (leftmost pixel)</p></li>
+<li><p>Index 7 corresponds to bit 0 (rightmost pixel)</p></li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gymnasium_retinatask</span><span class="w"> </span><span class="kn">import</span> <span class="n">RetinaPatterns</span>
+
+<span class="c1"># All pixels on</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="mb">0b11111111</span>  <span class="c1"># 255</span>
+<span class="n">obs</span> <span class="o">=</span> <span class="n">RetinaPatterns</span><span class="o">.</span><span class="n">pattern_to_observation</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>  <span class="c1"># [1. 1. 1. 1. 1. 1. 1. 1.]</span>
+
+<span class="c1"># Alternating pattern</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="mb">0b10101010</span>  <span class="c1"># 170</span>
+<span class="n">obs</span> <span class="o">=</span> <span class="n">RetinaPatterns</span><span class="o">.</span><span class="n">pattern_to_observation</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>  <span class="c1"># [1. 0. 1. 0. 1. 0. 1. 0.]</span>
+
+<span class="c1"># Custom pattern</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="mb">0b11001010</span>  <span class="c1"># 202</span>
+<span class="n">obs</span> <span class="o">=</span> <span class="n">RetinaPatterns</span><span class="o">.</span><span class="n">pattern_to_observation</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>  <span class="c1"># [1. 1. 0. 0. 1. 0. 1. 0.]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="pattern-constants">
+<h2>Pattern Constants<a class="headerlink" href="#pattern-constants" title="Link to this heading">¶</a></h2>
+<section id="valid-right-patterns">
+<h3>Valid Right Patterns<a class="headerlink" href="#valid-right-patterns" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">RIGHT_PATTERNS</span> <span class="o">=</span> <span class="p">[</span><span class="mb">0b1011</span><span class="p">,</span> <span class="mb">0b0111</span><span class="p">,</span> <span class="mb">0b1110</span><span class="p">,</span> <span class="mb">0b1101</span><span class="p">,</span> <span class="mb">0b0010</span><span class="p">,</span> <span class="mb">0b0001</span><span class="p">,</span> <span class="mb">0b0011</span><span class="p">,</span> <span class="mb">0b1111</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The 8 valid 4-bit patterns for the right side of the retina.</p>
+</section>
+<section id="valid-left-patterns">
+<h3>Valid Left Patterns<a class="headerlink" href="#valid-left-patterns" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">LEFT_PATTERNS</span> <span class="o">=</span> <span class="p">[</span><span class="mb">0b1000</span><span class="p">,</span> <span class="mb">0b0100</span><span class="p">,</span> <span class="mb">0b1100</span><span class="p">,</span> <span class="mb">0b1111</span><span class="p">,</span> <span class="mb">0b1011</span><span class="p">,</span> <span class="mb">0b0111</span><span class="p">,</span> <span class="mb">0b1110</span><span class="p">,</span> <span class="mb">0b1101</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The 8 valid 4-bit patterns for the left side of the retina.</p>
+</section>
+</section>
+<section id="complete-example">
+<h2>Complete Example<a class="headerlink" href="#complete-example" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gymnasium_retinatask</span><span class="w"> </span><span class="kn">import</span> <span class="n">RetinaPatterns</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">analyze_pattern</span><span class="p">(</span><span class="n">pattern</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Analyze a pattern and print all information.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Pattern: </span><span class="si">{</span><span class="n">pattern</span><span class="si">}</span><span class="s2"> (0b</span><span class="si">{</span><span class="n">pattern</span><span class="si">:</span><span class="s2">08b</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Check validity</span>
+    <span class="n">left_valid</span> <span class="o">=</span> <span class="n">RetinaPatterns</span><span class="o">.</span><span class="n">is_left_valid</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+    <span class="n">right_valid</span> <span class="o">=</span> <span class="n">RetinaPatterns</span><span class="o">.</span><span class="n">is_right_valid</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Left valid: </span><span class="si">{</span><span class="n">left_valid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Right valid: </span><span class="si">{</span><span class="n">right_valid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Get labels</span>
+    <span class="n">left_label</span><span class="p">,</span> <span class="n">right_label</span> <span class="o">=</span> <span class="n">RetinaPatterns</span><span class="o">.</span><span class="n">get_labels</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Labels: (</span><span class="si">{</span><span class="n">left_label</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">right_label</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Get observation</span>
+    <span class="n">obs</span> <span class="o">=</span> <span class="n">RetinaPatterns</span><span class="o">.</span><span class="n">pattern_to_observation</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Observation: </span><span class="si">{</span><span class="n">obs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Visualize</span>
+    <span class="n">left_pixels</span> <span class="o">=</span> <span class="n">obs</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
+    <span class="n">right_pixels</span> <span class="o">=</span> <span class="n">obs</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Left pixels:  </span><span class="si">{</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;█&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;·&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">left_pixels</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Right pixels: </span><span class="si">{</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;█&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;·&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">right_pixels</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Analyze some patterns</span>
+<span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">255</span><span class="p">]:</span>
+    <span class="n">analyze_pattern</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Pattern: 0 (0b00000000)
+Left valid: False
+Right valid: False
+Labels: (0.0, 0.0)
+Observation: [0. 0. 0. 0. 0. 0. 0. 0.]
+Left pixels:  ····
+Right pixels: ····
+
+Pattern: 65 (0b01000001)
+Left valid: True
+Right valid: True
+Labels: (1.0, 1.0)
+Observation: [0. 1. 0. 0. 0. 0. 0. 1.]
+Left pixels:  ·█··
+Right pixels: ···█
+
+...
+</pre></div>
+</div>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../environment/"><span class="doc">Environment API</span></a> - Main environment API</p></li>
+<li><p><a class="reference internal" href="../../content/pattern_analysis/"><span class="doc">Pattern Analysis</span></a> - Pattern analysis guide</p></li>
+</ul>
+</section>
+</section>
+
+          </article>
+        </div>
+        <footer>
+          
+          <div class="related-pages">
+            <a class="next-page" href="../../release_notes/">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Release Notes</div>
+              </div>
+              <svg class="furo-related-icon">
+                <use href="#svg-arrow-right"></use>
+              </svg>
+            </a>
+            <a class="prev-page" href="../environment/">
+              <svg class="furo-related-icon">
+                <use href="#svg-arrow-right"></use>
+              </svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Environment API</div>
+                
+              </div>
+            </a>
+          </div>
+          <div class="bottom-of-page">
+            <div class="left-details">
+              <div class="copyright">
+                Copyright &#169; 2025, Teaspoon AI
+              </div>
+              <!--
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            -->
+            </div>
+            <div class="right-details">
+              <div class="icons">
+                
+              </div>
+            </div>
+          </div>
+          
+        </footer>
+      </div>
+      <aside class="toc-drawer">
+        
+        
+        <div class="toc-sticky toc-scroll">
+          <div class="toc-title-container">
+            <span class="toc-title">
+              On this page
+            </span>
+          </div>
+          <div class="toc-tree-container">
+            <div class="toc-tree">
+              <ul>
+<li><a class="reference internal" href="#">Pattern Utilities API</a><ul>
+<li><a class="reference internal" href="#retinapatterns">RetinaPatterns</a><ul>
+<li><a class="reference internal" href="#gymnasium_retinatask.retina_env.RetinaPatterns"><code class="docutils literal notranslate"><span class="pre">RetinaPatterns</span></code></a><ul>
+<li><a class="reference internal" href="#gymnasium_retinatask.retina_env.RetinaPatterns.LEFT_PATTERNS"><code class="docutils literal notranslate"><span class="pre">RetinaPatterns.LEFT_PATTERNS</span></code></a></li>
+<li><a class="reference internal" href="#gymnasium_retinatask.retina_env.RetinaPatterns.RIGHT_PATTERNS"><code class="docutils literal notranslate"><span class="pre">RetinaPatterns.RIGHT_PATTERNS</span></code></a></li>
+<li><a class="reference internal" href="#gymnasium_retinatask.retina_env.RetinaPatterns.get_labels"><code class="docutils literal notranslate"><span class="pre">RetinaPatterns.get_labels()</span></code></a></li>
+<li><a class="reference internal" href="#gymnasium_retinatask.retina_env.RetinaPatterns.is_left_valid"><code class="docutils literal notranslate"><span class="pre">RetinaPatterns.is_left_valid()</span></code></a></li>
+<li><a class="reference internal" href="#gymnasium_retinatask.retina_env.RetinaPatterns.is_right_valid"><code class="docutils literal notranslate"><span class="pre">RetinaPatterns.is_right_valid()</span></code></a></li>
+<li><a class="reference internal" href="#gymnasium_retinatask.retina_env.RetinaPatterns.pattern_to_observation"><code class="docutils literal notranslate"><span class="pre">RetinaPatterns.pattern_to_observation()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#class-methods">Class Methods</a><ul>
+<li><a class="reference internal" href="#is-left-valid">is_left_valid</a></li>
+<li><a class="reference internal" href="#is-right-valid">is_right_valid</a></li>
+<li><a class="reference internal" href="#get-labels">get_labels</a></li>
+<li><a class="reference internal" href="#pattern-to-observation">pattern_to_observation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pattern-constants">Pattern Constants</a><ul>
+<li><a class="reference internal" href="#valid-right-patterns">Valid Right Patterns</a></li>
+<li><a class="reference internal" href="#valid-left-patterns">Valid Left Patterns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#complete-example">Complete Example</a></li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+        
+        
+      </aside>
+    </div>
+  </div>
+</div>
+    <script>
+      const toggleMenu = () => {
+        const menuBtn = document.querySelector(".farama-header-menu__btn");
+        const menuContainer = document.querySelector(".farama-header-menu-container");
+        if (document.querySelector(".farama-header-menu").classList.contains("active")) {
+          menuBtn.setAttribute("aria-expanded", "false");
+          menuContainer.setAttribute("aria-hidden", "true");
+        } else {
+          menuBtn.setAttribute("aria-expanded", "true");
+          menuContainer.setAttribute("aria-hidden", "false");
+        }
+        document.querySelector(".farama-header-menu").classList.toggle("active");
+      }
+
+      document.querySelector(".farama-header-menu__btn").addEventListener("click", toggleMenu);
+      document.getElementById("farama-close-menu").addEventListener("click", toggleMenu);
+    </script>
+
+    
+    
+
+    <script src="../../_static/documentation_options.js?v=b2731ba4"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=7660844c"></script>
+    
+    <script>
+
+      const createProjectsList = (projects, displayImages) => {
+        const ulElem = Object.assign(document.createElement('ul'),
+          {
+            className:'farama-header-menu-list',
+          }
+        )
+        for (let project of projects) {
+          const liElem = document.createElement("li");
+          const aElem = Object.assign(document.createElement("a"),
+            {
+              href: project.link
+            }
+          );
+          liElem.appendChild(aElem);
+          if (displayImages) {
+            const imgElem = Object.assign(document.createElement("img"),
+              {
+                src: project.image ? imagesBasepath + project.image : imagesBasepath + "/farama_black.svg",
+                alt: `${project.name} logo`,
+                className: "farama-black-logo-invert"
+              }
+            );
+            aElem.appendChild(imgElem);
+          }
+          aElem.appendChild(document.createTextNode(project.name));
+          ulElem.appendChild(liElem);
+        }
+        return ulElem;
+      }
+
+      // Create menu with Farama projects by using the API at farama.org/api/projects.json
+      const createCORSRequest = (method, url) => {
+        let xhr = new XMLHttpRequest();
+        xhr.responseType = 'json';
+
+        if ("withCredentials" in xhr) {
+          xhr.open(method, url, true);
+        } else if (typeof XDomainRequest != "undefined") {
+          // IE8 & IE9
+          xhr = new XDomainRequest();
+          xhr.open(method, url);
+        } else {
+          // CORS not supported.
+          xhr = null;
+        }
+        return xhr;
+      };
+
+      const url = 'https://farama.org/api/projects.json';
+      const imagesBasepath = "https://farama.org/assets/images"
+      const method = 'GET';
+      let xhr = createCORSRequest(method, url);
+
+      xhr.onload = () => {
+        const jsonResponse = xhr.response;
+        const sections = {
+          "Core Projects": [],
+          "Mature Projects": {
+            "Documentation": [],
+            "Repositories": [],
+          },
+          "Incubating Projects": {
+            "Documentation": [],
+            "Repositories": [],
+          },
+          "Foundation": [
+            {
+              name: "About",
+              link: "https://farama.org/about"
+            },
+            {
+              name: "Standards",
+              link: "https://farama.org/project_standards",
+            },
+            {
+              name: "Donate",
+              link: "https://farama.org/donations"
+            }
+          ]
+        }
+
+        // Categorize projects
+        Object.keys(jsonResponse).forEach(key => {
+          projectJson = jsonResponse[key];
+          if (projectJson.website !== null) {
+            projectJson.link = projectJson.website;
+          } else {
+            projectJson.link = projectJson.github;
+          }
+          if (projectJson.type === "core") {
+            sections["Core Projects"].push(projectJson)
+          } else if (projectJson.type == "mature") {
+            if (projectJson.website !== null) {
+              sections["Mature Projects"]["Documentation"].push(projectJson)
+            } else {
+              sections["Mature Projects"]["Repositories"].push(projectJson)
+            }
+          } else {
+            if (projectJson.website !== null) {
+              sections["Incubating Projects"]["Documentation"].push(projectJson)
+            } else {
+              sections["Incubating Projects"]["Repositories"].push(projectJson)
+            }
+          }
+        })
+
+        const menuContainer = document.querySelector(".farama-header-menu__body");
+
+        Object.keys(sections).forEach((key, i) => {
+          const sectionElem = Object.assign(
+            document.createElement('div'), {
+              className:'farama-header-menu__section',
+            }
+          )
+          sectionElem.appendChild(Object.assign(document.createElement('span'),
+            {
+              className:'farama-header-menu__section-title' ,
+              innerText: key
+            }
+          ))
+          // is not a list
+          if (sections[key].constructor !== Array) {
+            const subSections = sections[key];
+            const subSectionContainerElem = Object.assign(
+                document.createElement('div'), {
+                  className:'farama-header-menu__subsections-container',
+                  style: 'display: flex'
+                }
+            )
+            Object.keys(subSections).forEach((subKey, i) => {
+              const subSectionElem = Object.assign(
+                document.createElement('div'), {
+                  className:'farama-header-menu__subsection',
+                }
+              )
+              subSectionElem.appendChild(Object.assign(document.createElement('span'),
+                {
+                  className:'farama-header-menu__subsection-title' ,
+                  innerText: subKey
+                }
+              ))
+              const ulElem = createProjectsList(subSections[subKey], key !== 'Foundation');
+              subSectionElem.appendChild(ulElem);
+              subSectionContainerElem.appendChild(subSectionElem);
+            })
+            sectionElem.appendChild(subSectionContainerElem);
+          } else {
+            const projects = sections[key];
+            const ulElem = createProjectsList(projects, true);
+            sectionElem.appendChild(ulElem);
+          }
+          menuContainer.appendChild(sectionElem)
+        });
+      }
+
+      xhr.onerror = function() {
+        console.error("Unable to load projects");
+      };
+
+      xhr.send();
+    </script>
+
+    
+    
+
+    </body>
+</html>
