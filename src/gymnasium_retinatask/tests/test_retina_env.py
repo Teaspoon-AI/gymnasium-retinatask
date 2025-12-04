@@ -1,8 +1,12 @@
 """Tests for the Retina Task environment."""
 
+from typing import cast
+
 import gymnasium as gym
 import numpy as np
 import pytest
+
+from gymnasium_retinatask import RetinaEnvV0
 
 
 class TestRetinaPatterns:
@@ -145,20 +149,26 @@ class TestRetinaEnv:
 
     def test_observation_space_bounds(self):
         """Verify observation space is properly bounded [0, 1]."""
+        from gymnasium import spaces
+
         env = gym.make("RetinaTask-v0")
-        assert env.observation_space.low.min() == 0.0
-        assert env.observation_space.high.max() == 1.0
-        assert env.observation_space.shape == (8,)
-        assert env.observation_space.dtype == np.float32
+        obs_space = cast(spaces.Box, env.observation_space)
+        assert obs_space.low.min() == 0.0
+        assert obs_space.high.max() == 1.0
+        assert obs_space.shape == (8,)
+        assert obs_space.dtype == np.float32
         env.close()
 
     def test_action_space_bounds(self):
         """Verify action space is properly bounded [0, 1]."""
+        from gymnasium import spaces
+
         env = gym.make("RetinaTask-v0")
-        assert env.action_space.low.min() == 0.0
-        assert env.action_space.high.max() == 1.0
-        assert env.action_space.shape == (2,)
-        assert env.action_space.dtype == np.float32
+        action_space = cast(spaces.Box, env.action_space)
+        assert action_space.low.min() == 0.0
+        assert action_space.high.max() == 1.0
+        assert action_space.shape == (2,)
+        assert action_space.dtype == np.float32
         env.close()
 
     def test_seed_reproducibility_single_pattern(self):
@@ -561,7 +571,7 @@ class TestRetinaEnv:
         obs, info = env.reset()
 
         # Access unwrapped environment to check internal state
-        unwrapped = env.unwrapped
+        unwrapped = cast(RetinaEnvV0, env.unwrapped)
 
         # pattern_index should start at 0 after reset
         assert unwrapped.pattern_index == 0
@@ -578,7 +588,7 @@ class TestRetinaEnv:
     def test_multiple_episodes_reset_state(self):
         """Verify environment properly resets state between episodes."""
         env = gym.make("RetinaTask-v0", mode="batch", batch_size=10)
-        unwrapped = env.unwrapped
+        unwrapped = cast(RetinaEnvV0, env.unwrapped)
 
         # First episode
         obs1, info1 = env.reset(seed=42)
