@@ -7,6 +7,10 @@
 
 A Gymnasium-compatible implementation of the **Left & Right Retina Problem**, a benchmark task for testing the evolution of modular neural networks.
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Teaspoon-AI/gymnasium-retinatask/main/retinatask-text.png" alt="Gymnasium Retina Task Preview" width="500"/>
+</p>
+
 ## Overview
 
 The Retina Task is based on the work by Risi & Stanley (Artificial Life 2012) on evolving modular neural networks using ES-HyperNEAT. The task tests an agent's ability to independently classify patterns on the left and right sides of a 4x2 artificial retina.

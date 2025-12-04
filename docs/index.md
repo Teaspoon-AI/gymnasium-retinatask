@@ -1,8 +1,16 @@
-# Gymnasium Retina Task
+---
+hide-toc: true
+firstpage:
+lastpage:
+---
 
+```{project-logo} _static/img/retinatask-text.png
+:alt: Retina Task Logo
+```
+
+```{project-heading}
 A Gymnasium-compatible implementation of the **Left & Right Retina Problem**, a benchmark task for testing modular neural network evolution.
-
-## Overview
+```
 
 The Retina Task is a pattern classification problem originally introduced by Kashtan and Alon (2005) and used extensively in research on evolving modular neural networks, including the ES-HyperNEAT algorithm (Risi & Stanley, Artificial Life 2012).
 
@@ -149,6 +157,7 @@ api/patterns
 :hidden:
 :caption: Development
 
+release_notes
 content/contributing
 GitHub <https://github.com/Teaspoon-AI/gymnasium-retinatask>
 ```
