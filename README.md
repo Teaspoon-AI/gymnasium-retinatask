@@ -194,6 +194,50 @@ uv run python src/gymnasium_retinatask/examples/perfect_agent.py
 uv run python src/gymnasium_retinatask/examples/random_agent.py
 ```
 
+## Advanced Examples
+
+The `examples/` directory contains complete, working implementations using different ML frameworks:
+
+### NEAT Evolution
+
+Evolve neural networks using NEAT (NeuroEvolution of Augmenting Topologies):
+
+```bash
+# Install NEAT dependencies
+uv sync --group examples-neat
+
+# Run NEAT evolution (50 generations)
+uv run python examples/neat_evolution.py
+```
+
+This example demonstrates:
+- Configuring NEAT for the Retina Task
+- Evaluating genomes on all 256 patterns
+- Tracking evolution statistics across generations
+- Testing the best evolved network
+
+Expected results: ~75-90% accuracy after 50 generations.
+
+### HyperNEAT Evolution
+
+Evolve networks using HyperNEAT, which exploits the geometric structure of the retina:
+
+```bash
+# Install NEAT dependencies (same as above)
+uv sync --group examples-neat
+
+# Run HyperNEAT evolution (30 generations)
+uv run python examples/hyperneat_evolution.py
+```
+
+HyperNEAT features:
+- CPPN (Compositional Pattern Producing Network) generates substrate weights
+- Substrate network matches the 2D retina geometry
+- Encourages modular solutions for left/right independence
+- Analyzes evolved network structure
+
+The geometric substrate layout helps HyperNEAT discover modular solutions more efficiently than standard NEAT.
+
 ## Development
 
 ### Running Tests

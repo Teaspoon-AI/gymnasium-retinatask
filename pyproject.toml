@@ -51,6 +51,9 @@ docs = [
     "sphinx>=7.1.2",
     "sphinx-autobuild>=2021.3.14",
 ]
+examples-neat = [
+    "neat-python>=0.92",
+]
 
 [tool.black]
 line-length = 88

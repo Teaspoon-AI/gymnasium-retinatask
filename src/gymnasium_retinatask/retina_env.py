@@ -277,14 +277,14 @@ class RetinaEnvV0(gym.Env):
 
         # Calculate reward
         if self.reward_type == "paper":
-            # Use fitness function from paper: F = 1000.0 / (1.0 + E)
+            # Use fitness function from paper: F = 1000.0 / (1.0 + E²)
             # For episodic: E is total error across all patterns
             # For single step: E is error for this pattern
             if self.mode == "single_pattern":
-                reward = 1000.0 / (1.0 + pattern_error)
+                reward = 1000.0 / (1.0 + pattern_error**2)
             else:
                 # In batch/full eval, give final reward at end
-                reward = 1000.0 / (1.0 + self.total_error) if terminated else 0.0
+                reward = 1000.0 / (1.0 + self.total_error**2) if terminated else 0.0
         else:
             # Simple: negative error
             reward = -pattern_error
